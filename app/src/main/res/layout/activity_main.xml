@@ -1,100 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <!-- Tabs -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        app:tabMode="fixed"
+        app:tabGravity="fill"/>
 
-        <!-- Add Player -->
-        <EditText
-            android:id="@+id/editTextPlayerName"
-            android:hint="Enter Player Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"/>
+    <!-- ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Bottom Bar with Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center"
+        android:background="?android:attr/windowBackground">
 
         <Button
-            android:id="@+id/buttonAddPlayer"
-            android:text="Add Player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- Add Anlage -->
-        <EditText
-            android:id="@+id/editTextAnlageName"
-            android:hint="Enter Anlage Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"/>
-
-        <NumberPicker
-            android:id="@+id/numberPickerAnlageNumber"
+            android:id="@+id/bottomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-        <Button
-            android:id="@+id/buttonAddAnlage"
-            android:text="Add Anlage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-
-        <!-- Add Turnier -->
-        <EditText
-            android:id="@+id/editTextTurnierName"
-            android:hint="Enter Turnier Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"/>
-
-        <Spinner
-            android:id="@+id/spinnerAnlageForTurnier"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/buttonAddTurnier"
-            android:text="Add Turnier"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- Add Player to Turnier -->
-        <Spinner
-            android:id="@+id/spinnerSelectPlayer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Spinner
-            android:id="@+id/spinnerSelectTurnier"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/buttonAddPlayerToTurnier"
-            android:text="Add Player to Turnier"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Spinner
-            android:id="@+id/spinnerSelectTurnier2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/buttonGoToGridActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Go to Grid Activity" />
-
-
+            android:text="Bottom Button" />
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

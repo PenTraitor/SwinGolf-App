@@ -50,7 +50,7 @@ public class DatabaseHandler {
     public void changeSpielerName(Spieler spieler){
         spielerDao.update(spieler);
     }
-    public  void deleteSpiler(Spieler spieler){
+    public  void deleteSpieler(Spieler spieler){
         spielerDao.delete(spieler);
     }
     public  List<Spieler> getAllSpieler(){
@@ -81,7 +81,9 @@ public class DatabaseHandler {
         return turnierDao.getAll();
     }
     public void deleteTurnier(Turnier turnier){
-        turnierDao.delete(turnier);
+
+
+    turnierDao.delete(turnier);
     }
 
 
