@@ -2,11 +2,17 @@ package com.example.saving_test.Activities;
 
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.InputType;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -16,14 +22,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.saving_test.R;
 import com.example.saving_test.database.DatabaseHandler;
-import com.example.saving_test.database.GameState;
-import com.example.saving_test.database.entity.Spiel;
+import com.example.saving_test.database.dao.GameState;
 import com.example.saving_test.database.entity.Spieler;
 import com.example.saving_test.database.entity.Turnier;
 
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 public class GridActivity extends AppCompatActivity {
     private DatabaseHandler dbHandler;
@@ -37,8 +43,12 @@ public class GridActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
 
+        Button buttonGetWinner = findViewById(R.id.winnerButton);
+        buttonGetWinner.setOnClickListener(v -> getCurrentWinnerDialog());
+
 
         turnierID = getIntent().getLongExtra("TURNIER_ID", -1);
+
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
@@ -48,6 +58,39 @@ public class GridActivity extends AppCompatActivity {
             spielerList= state.spieler;
             //  Update UI on main thread
             runOnUiThread(() -> setGrid(gameState));
+        });
+    }
+
+    private void getCurrentWinnerDialog() {
+        Executor executor = Executors.newSingleThreadExecutor();
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() -> {
+            List<Spieler> allWinner = dbHandler.currentWinner(turnierID); // Fetch in background
+            String winner = allWinner
+                    .stream()
+                    .map(a -> String.valueOf(a.Name))
+                    .collect(Collectors.joining(","));
+
+            if (allWinner == null || allWinner.isEmpty()) {
+                mainHandler.post(() ->
+                        Toast.makeText(this, "No Winner found", Toast.LENGTH_SHORT).show()
+                );
+                return;
+            }
+
+            mainHandler.post(() -> {
+                // 1. Instantiate an AlertDialog.Builder with its constructor.
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                // 2. Chain together various setter methods to set the dialog characteristics.
+                builder.setMessage(winner )
+                        .setTitle("Current Winner");
+
+                // 3. Get the AlertDialog.
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            });
         });
     }
 

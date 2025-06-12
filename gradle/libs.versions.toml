@@ -26,5 +26,6 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompi
 room-testing = { module = "androidx.room:room-testing", version.ref = "roomCompiler" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
+android-application = { id = "com.android.application", version = "8.5.0" }
+
 

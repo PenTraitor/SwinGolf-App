@@ -2,13 +2,22 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TableLayout
-        android:id="@+id/tableLayoutGameState"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        android:shrinkColumns="*"
-        android:padding="5dp"
-        android:layout_gravity="center"/>
+        android:orientation="vertical">
+        <TableLayout
+            android:id="@+id/tableLayoutGameState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:shrinkColumns="*"
+            android:padding="5dp"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/winnerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Winner" />
+    </LinearLayout>
 </ScrollView>

@@ -1,4 +1,4 @@
-package com.example.saving_test.database;
+package com.example.saving_test.database.dao;
 
 import com.example.saving_test.database.entity.Spieler;
 

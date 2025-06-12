@@ -8,7 +8,7 @@ import com.example.saving_test.database.DatabaseHandler;
 import com.example.saving_test.database.entity.Anlage;
 import com.example.saving_test.database.entity.Spieler;
 import com.example.saving_test.database.entity.Turnier;
-import com.example.saving_test.database.GameState;
+import com.example.saving_test.database.dao.GameState;
 
 import org.junit.After;
 import org.junit.Before;

@@ -153,7 +153,7 @@ public class DatabaseHandler {
     }
 
     public List<Spieler> currentWinner(long TurnierID){
-        int currentBestScore =-1;
+        int currentBestScore =10000;
         List<Spieler> currenBestPlayer = new ArrayList<>();
         TurnierMitSpieler tms= turnierDao.getTurnierMitSpielern(TurnierID);
         for (int x = 0; x < tms.spieler.size(); x++) {
@@ -162,9 +162,11 @@ public class DatabaseHandler {
                 //new best player
                 currenBestPlayer = new ArrayList<>();
                 currenBestPlayer.add(tms.spieler.get(x));
+                currentBestScore = total;
             }else if(total== currentBestScore){
                 //new equel as best player
                 currenBestPlayer.add(tms.spieler.get(x));
+                currentBestScore = total;
             }
         }
         return currenBestPlayer;

@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public DatabaseHandler getDatabaseHandler() {
         return dbHandler;
     }
+
     private void showTurnierSelectionDialog() {
         Executor executor = Executors.newSingleThreadExecutor();
         Handler mainHandler = new Handler(Looper.getMainLooper());

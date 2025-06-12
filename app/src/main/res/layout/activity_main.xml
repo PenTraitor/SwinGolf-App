@@ -32,6 +32,6 @@
             android:id="@+id/bottomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bottom Button" />
+            android:text="Grid Button" />
     </LinearLayout>
 </LinearLayout>

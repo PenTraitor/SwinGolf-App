@@ -11,7 +11,7 @@ import com.example.saving_test.database.entity.Spiel;
 import java.util.List;
 
 @Dao
-public interface SpielDao {
+public interface  SpielDao {
     @Query("SELECT * FROM Spiel")
     List<Spiel> getAll();
 
